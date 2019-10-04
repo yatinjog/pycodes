@@ -1,0 +1,20 @@
+l = []
+flag = True
+n = int(input("How many elements do you want to sort : "))
+
+for i in range(n):
+    a = float(input("Enter a number : "))
+    l.append(a)
+
+print("\nInput List:")
+print(l)
+
+while flag:
+    flag = False
+    for i in range(len(l) - 1):
+        if l[i] > l[i + 1]:
+            flag = True
+            l[i], l[i + 1] = l[i + 1], l[i]
+
+print("\nSorted List:")
+print(l)
