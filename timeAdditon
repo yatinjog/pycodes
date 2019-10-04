@@ -1,0 +1,15 @@
+#time addition
+
+h = int(input("Enter Hours   : "))
+m = int(input("Enter Minutes : "))
+d = int(input("Enter Duraition in Minutes : "))
+
+m += d
+
+h += (m//60)
+
+m %= 60
+
+h %= 24
+
+print("Result of time addition : ", h, ":", m)
