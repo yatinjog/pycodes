@@ -1,0 +1,37 @@
+#Sum, Max, Min, Avg of n numbers
+
+max=min=0
+sum=0
+count=1
+
+print("Enter x/X to exit...")
+
+while True:
+    print("Enter Number ",count,": ", end=" ")
+    a = input()
+
+    if a=='x' or a=='X':
+        break
+
+    a = int(a)
+    
+    if count==1:
+        max = min = a
+        sum += a
+        count += 1
+        continue
+        
+    if a> max:
+        max = a
+    if a<min:
+        min = a
+
+    sum += a
+    count += 1
+
+count -= 1
+print("Analysis of ", count," numbers")
+print("Maximum : ", max)
+print("Minimum : ", min)
+print("Sum     : ", sum)
+print("Average : ", sum/count)
