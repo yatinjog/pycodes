@@ -1,0 +1,40 @@
+#Insert Sort of n numbers
+
+l=[]
+
+count=1
+
+print("Enter x/X to exit...")
+
+while True:
+    print("Enter Number ",count,": ", end=" ")
+    a = input()
+
+    if a=='x' or a=='X':
+        break
+
+    a = int(a)
+
+    if count==1:
+        l.insert(0,a)
+    elif count==2:
+        if a<l[0]:
+            l.insert(0,a)
+        else:
+            l.insert(1,a)
+    else:
+        i=0
+        for i in range(count-1):
+            if a<=l[i]:
+                l.insert(i,a)
+                break
+        if (i+1) == count-1:
+            l.insert(i+1,a)
+    
+    count += 1
+
+count -= 1
+
+
+print("Insert Sort")
+print(l)
