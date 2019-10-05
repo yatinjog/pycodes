@@ -1,0 +1,44 @@
+#Factorial and Fibonaci
+
+def fact(n):
+    k=1
+
+    if n<0:
+        return 0
+
+    if n==0 or n==1:
+        return 1
+
+    for i in range(2,n+1):
+        k *= i
+
+    return k
+    
+
+def fibo(n):
+    if n<=0:
+        print(" EMPTY")
+        return
+    if n==1:
+        print(" 0")
+        return
+    if n==2:
+        print(" 0  1")
+        return
+
+    a=0
+    b=1
+    print(" 0  1", end="")
+    for i in range(2,n+1):
+        c = a+b
+        print(" ",c, end="")
+        a=b
+        b=c
+
+print("Enter a Number to Find Factorial and Terms of Fibonaci Series : ", end="")
+n = int(input())
+
+print("\n",n,"! = ", fact(n))
+
+print("\n",n," Terms of Fibonaci Series :")
+fibo(n)
