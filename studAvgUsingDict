@@ -1,0 +1,29 @@
+#Evaluate the students' average scores
+#create a dictionary with name and score(s)
+
+schoolClass = {}
+
+while True:
+    name = input("Enter Student Name : ")
+    
+    score = int(input("Enter Marks : "))
+    
+    if name in schoolClass:
+        schoolClass[name] += (score,)
+    else:
+        schoolClass[name] = (score,)
+    
+    k = input("Do You Want to Add More Students (y/n) : ")
+    
+    if k == 'n' or k == 'N':
+        break
+    
+
+for name in sorted(schoolClass.keys()):
+    sum = 0
+    counter = 0
+    for score in schoolClass[name]:
+        sum += score
+        counter += 1
+    print(name, " : ", schoolClass[name], " Average :", sum / counter)
+    
