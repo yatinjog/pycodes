@@ -1,0 +1,25 @@
+#temperature reading is taken r times a day for c days
+#Find max temperature
+
+r=4
+c=3
+max=0
+
+ts = [[0.0 for d in range(r)] for h in range(c)]
+
+print("Enter temperature values :")
+
+for i in range(c):
+    print("\nDay ", i+1)
+    for j in range(r):
+        print("Time", j+1, end=" : ")
+        ts[i][j] = int(input())
+
+        if i==0 and j==0:
+            max = ts[i][j]
+        else:
+            if ts[i][j]>max:
+                max=ts[i][j]
+
+print("\nTemperature Values\n",ts)
+print("\nMaximum Temperature : ", max)
