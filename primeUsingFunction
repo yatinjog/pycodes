@@ -1,0 +1,18 @@
+#Prime numbers between a and b
+
+def isPrime(n):
+    for i in range(2,n//2 +1):
+        if n%i == 0:
+            return False
+            return False
+    return True
+
+a = int(input("Enter A : "))
+b = int(input("Enter B : "))
+
+print("\nPrime Numbers Between ",a," and ",b," :")
+
+for i in range(a, b):
+    if isPrime(i + 1):
+        print(i + 1, end=" ")
+print()
