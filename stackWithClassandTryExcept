@@ -7,34 +7,38 @@ class Stack:
 
 
     def pop(self):
+        print()
         try:
             val = self.__stack[-1]
             del self.__stack[-1]
             return val    
         except IndexError:
             if len(self.__stack) == 0:
-                print("Stack Is Empty...")
+                print("Stack Is Empty...\n\n")
                 return None
         except:
             return None
 
     def peep(self):
+        print()
         try:
             val = self.__stack[-1]
             return val    
         except IndexError:
             if len(self.__stack) == 0:
-                print("Stack Is Empty...")
+                print("Stack Is Empty...\n\n")
                 return None
         except:
             return None          
 
     def display(self):
+        print()
         if len(self.__stack) == 0:
-            print("Stack Is Empty...")
+            print("Stack Is Empty...\n\n")
             return
             
-        print("Stack -> ", self.__stack, "-Top")
+        print("Stack :", self.__stack, "<-Top")
+        print()
 
 
 def acceptNumber():
@@ -93,7 +97,7 @@ while True:
             continue
         stackObj.display()
         print("Value At The Top Of The Stack Is ", val)
+        print()
 
     if ch==4:
         stackObj.display()
-        
