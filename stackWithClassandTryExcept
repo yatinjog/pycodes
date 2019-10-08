@@ -1,0 +1,100 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self,val):
+        self.stack.append(val)
+
+
+    def pop(self):
+        try:
+            val = self.stack[-1]
+            del self.stack[-1]
+            return val    
+        except IndexError:
+            if len(self.stack) == 0:
+                print("Stack Is Empty...")
+                return None
+        except:
+            return None
+
+    def peep(self):
+        try:
+            val = self.stack[-1]
+            return val    
+        except IndexError:
+            if len(self.stack) == 0:
+                print("Stack Is Empty...")
+                return None
+        except:
+            return None          
+
+    def display(self):
+        if len(self.stack) == 0:
+            print("Stack Is Empty...")
+            return
+            
+        print("Stack -> ", self.stack, "-Top")
+
+
+def acceptNumber():
+    while True:
+        val = input()
+
+        if not val.isdigit():
+            print(val, " Is Invalid Input...")
+            print("Enter Valid Input : ", end="")
+        else:
+            break
+    
+    return int(val)
+
+
+stackObj = Stack()
+
+
+while True:
+    print("0. Exit")
+    print("1. Push")
+    print("2. Pop")
+    print("3. Peep")
+    print("4. Display")
+    print("Enter Your Choice : ", end="")
+
+    ch = acceptNumber()
+
+    if ch<0 or ch>4:
+        print(ch, " Is Invalid Input...")
+        print("Please Enter A Valid Choice...")
+        continue
+        
+    if ch==0:
+        stackObj.display()
+        print("Thank You...")
+        break
+    
+    if ch==1:
+        print("Enter A Number To Push Onto The Stack : ", end="")
+        val = acceptNumber()
+        stackObj.push(val)
+        print(val, " Pushed Onto The Stack...")
+        stackObj.display()
+
+    if ch==2:
+        val = stackObj.pop()
+        if val == None:
+            continue
+        print(val, " Popped From The Stack...")
+        stackObj.display()
+
+    if ch==3:
+        val = stackObj.peep()
+        if val == None:
+            continue
+        stackObj.display()
+        print("Value At The Top Of The Stack Is ", val)
+
+    if ch==4:
+        stackObj.display()
+        
+    
