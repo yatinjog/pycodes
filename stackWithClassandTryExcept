@@ -1,16 +1,23 @@
 class Stack:
+    
+    logOfOperations = ['']
+
     def __init__(self):
         self.__stack = []
+        Stack.logOfOperations[0] = ('Stack Created')
+       
 
     def push(self,val):
         self.__stack.append(val)
-
+        Stack.logOfOperations.append('Push '+str(val))
+        
 
     def pop(self):
         print()
         try:
             val = self.__stack[-1]
             del self.__stack[-1]
+            Stack.logOfOperations.append('Pop '+str(val))
             return val    
         except IndexError:
             if len(self.__stack) == 0:
@@ -19,10 +26,12 @@ class Stack:
         except:
             return None
 
+
     def peep(self):
         print()
         try:
             val = self.__stack[-1]
+            Stack.logOfOperations.append('Peep '+str(val))
             return val    
         except IndexError:
             if len(self.__stack) == 0:
@@ -31,13 +40,24 @@ class Stack:
         except:
             return None          
 
-    def display(self):
+
+    def display(self, fromWhere):
         print()
         if len(self.__stack) == 0:
             print("Stack Is Empty...\n\n")
             return
-            
+
+        if fromWhere==1:
+            Stack.logOfOperations.append('Display Stack')
         print("Stack :", self.__stack, "<-Top")
+        print()
+
+
+    def displayLog(self):
+        print()
+        print("Log Of Stack Operations Is As Follows:")
+        for opr in self.logOfOperations:
+            print(" - ",opr)
         print()
 
 
@@ -62,18 +82,22 @@ while True:
     print("1. Push")
     print("2. Pop")
     print("3. Peep")
-    print("4. Display")
+    print("4. Display Stack")
+    print("5. Display Log Of Operations")
     print("Enter Your Choice : ", end="")
 
     ch = acceptNumber()
 
-    if ch<0 or ch>4:
+    if ch<0 or ch>5:
         print(ch, " Is Invalid Input...")
         print("Please Enter A Valid Choice...")
         continue
         
     if ch==0:
-        stackObj.display()
+        stackObj.display(0)
+        print()
+        stackObj.displayLog()
+        print()
         print("Thank You...")
         break
     
@@ -82,22 +106,25 @@ while True:
         val = acceptNumber()
         stackObj.push(val)
         print(val, " Pushed Onto The Stack...")
-        stackObj.display()
+        stackObj.display(0)
 
     if ch==2:
         val = stackObj.pop()
         if val == None:
             continue
         print(val, " Popped From The Stack...")
-        stackObj.display()
+        stackObj.display(0)
 
     if ch==3:
         val = stackObj.peep()
         if val == None:
             continue
-        stackObj.display()
+        stackObj.display(0)
         print("Value At The Top Of The Stack Is ", val)
         print()
 
     if ch==4:
-        stackObj.display()
+        stackObj.display(1)
+
+    if ch==5:
+        stackObj.displayLog()
