@@ -1,18 +1,18 @@
 class Stack:
     def __init__(self):
-        self.stack = []
+        self.__stack = []
 
     def push(self,val):
-        self.stack.append(val)
+        self.__stack.append(val)
 
 
     def pop(self):
         try:
-            val = self.stack[-1]
-            del self.stack[-1]
+            val = self.__stack[-1]
+            del self.__stack[-1]
             return val    
         except IndexError:
-            if len(self.stack) == 0:
+            if len(self.__stack) == 0:
                 print("Stack Is Empty...")
                 return None
         except:
@@ -20,21 +20,21 @@ class Stack:
 
     def peep(self):
         try:
-            val = self.stack[-1]
+            val = self.__stack[-1]
             return val    
         except IndexError:
-            if len(self.stack) == 0:
+            if len(self.__stack) == 0:
                 print("Stack Is Empty...")
                 return None
         except:
             return None          
 
     def display(self):
-        if len(self.stack) == 0:
+        if len(self.__stack) == 0:
             print("Stack Is Empty...")
             return
             
-        print("Stack -> ", self.stack, "-Top")
+        print("Stack -> ", self.__stack, "-Top")
 
 
 def acceptNumber():
@@ -97,4 +97,3 @@ while True:
     if ch==4:
         stackObj.display()
         
-    
