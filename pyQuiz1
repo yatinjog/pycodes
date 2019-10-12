@@ -1,0 +1,19 @@
+#Given two strings of comma-seperated values,
+#sort and return the second list based on the ordering of the first list.
+
+s1 = "3,5,1,4,2"
+s2 = "2,5,1,4,5,3,1,2"
+
+s3 = ""
+for i in s1:
+    if i==",":
+        continue
+    for j in s2:
+        if j==",":
+            continue
+        if j==i:
+            s3 += j
+            s3 += ","
+
+s3 = s3.rstrip(",")
+print(s3)
