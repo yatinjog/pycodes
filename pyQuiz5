@@ -1,0 +1,34 @@
+#Implement an Object oriented programming features like Class, Object, Constructor in Python
+#to capture basic details of an Employee like Name, Salary etc.
+#Develop a program to read and display the Employee details along with the total number of employees exists
+
+class Employees:
+    __empCount = 0
+
+    def __init__ (self, name="", salary=0):
+        self.ename = name
+        self.salary = salary
+        Employees.__empCount += 1
+
+    def getEmp(self):
+        print("Name : ", self.ename, "\nSalary : ", self.salary)
+
+    def setEmp(self, name, salary):
+        self.ename = name
+        self.salary = salary
+
+    def getEmpCount(self):
+        return Employees.__empCount
+    
+    
+emp1 = Employees()
+emp2 = Employees()
+emp3 = Employees("CCC",300)
+
+emp2.setEmp("BBB",200)
+
+emp1.getEmp()
+emp2.getEmp()
+emp3.getEmp()
+
+print("Total Number of Employees : ", Employees.getEmpCount(Employees))
