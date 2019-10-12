@@ -1,0 +1,32 @@
+#
+# This script is Copyright (C) 2004-2019 and is owned by Tenable, Inc. or an Affiliate thereof.
+#
+# This script is released under the Tenable Subscription License and
+# may not be used from within scripts released under another license
+# without authorization from Tenable, Inc.
+#
+# See the following licenses for details:
+#
+# http://static.tenable.com/prod_docs/Nessus_6_SLA_and_Subscription_Agreement.pdf
+#
+# @PROFESSIONALFEED@
+#
+# $Revision: 1.0 $
+
+
+<custom_item>
+  type        : CONFIG_CHECK
+  description : "NET0162 - The router interfaces that connect to an AG are configured with an ingress ACL - Source IP"
+  info        : "Any enclave with one or more AG connections will have to take additional steps to ensure that neither their network nor the NIPRNet is compromised.  Without verifying the destination address of traffic coming from the site's AG, the premise router could be routing transit data from the Internet into the NIPRNet.  This could also make the premise router vulnerable to a DoS attack as well as provide a backdoor into the NIPRNet.  The DOD enclave must ensure that the premise router's ingress packet filter for any interface connected to an AG is configured to only permit packets with a destination address belonging to the DOD enclave's address block."
+  solution    : "Insure the ingress ACL for any interface connected to an AAG is configured to only permit packets with a destination address belonging to the sites address block."
+  reference   : "800-171|3.13.1,800-53|SC-7,CAT|I,CSF|PR.AC-5,CSF|PR.PT-4,ITSG-33|SC-7,NIAv2|GS7c,Rule-ID|SV-4622r2_rule,STIG-ID|NET0162,Vuln-ID|V-4622"
+  see_also    : "https://iasecontent.disa.mil/stigs/zip/U_Network_Perimeter_Router_L3_Switch_V8R32_STIG.zip"
+# Note: Variable @AG_INGRESS_FILTER@ replaced with "ag-ingress-filter" in field "regex".
+  regex       : "set firewall filter ag-ingress-filter"
+# Note: Variable @AG_INGRESS_FILTER@ replaced with "ag-ingress-filter" in field "expect".
+# Note: Variable @AG_SOURCEIP_AND_NETMASK@ replaced with "192\\.168\\.0\\.1/24" in field "expect".
+  expect      : "set firewall filter ag-ingress-filter .+ from source-address 192\\.168\\.0\\.1/24"
+</custom_item>
+
+
+
