@@ -1,0 +1,88 @@
+#Router check file parsing
+
+class routerCheckItems:
+    def __init__(self):
+        self.Type=""
+        self.Description=""
+        self.Info=""
+        self.Solution=""
+        self.Reference=""
+        self.See_also=""
+        self.Regex=""
+        self.Expect=""
+        self.Not_expect=""
+
+    def displayItems(self):
+        print("Type\t\t:\t", self.Type)
+        print("Description\t:\t", self.Description)
+        print("Info\t\t:\t", self.Info)
+        print("Solution\t:\t", self.Solution)
+        print("Reference\t:\t", self.Reference)
+        print("See_also\t:\t", self.See_also)
+        print("Regex\t\t:\t", self.Regex)
+        print("Expect\t\t:\t", self.Expect)
+        print("Not_expect\t:\t", self.Not_expect)
+
+rCT = routerCheckItems()
+
+
+try:
+    routerFile = open("Juniper_Perimeter_Router_V8R32.audit","rt")
+except:
+    print("Invalid File Operation")
+    exit()
+
+for i in range(102):
+    line = routerFile.readline()
+    if line == "":
+        break
+
+    if line[0]=='#':
+        continue
+
+    if line.find("<custom_item>") != -1:
+        while True:
+            line = routerFile.readline()
+            if line.find("</custom_item>") != -1:
+                break
+
+            if line.find("type") != -1:
+                x = line.split(":")
+                rCT.Type = x[1].lstrip().rstrip()
+                
+            if line.find("description") != -1:
+                x = line.split(":")
+                rCT.Description = x[1].lstrip().rstrip()
+                        
+            if line.find("info") != -1:
+                x = line.split(":")
+                rCT.Info = x[1].lstrip().rstrip()
+                
+            if line.find("solution") != -1:
+                x = line.split(":")
+                rCT.Solution = x[1].lstrip().rstrip()
+                        
+            if line.find("reference") != -1:
+                x = line.split(":")
+                rCT.Reference = x[1].lstrip().rstrip()
+                
+            if line.find("see_also") != -1:
+                x = line.split(":")
+                rCT.See_also = x[1].lstrip().rstrip()
+                        
+            if line.find("regex") != -1:
+                x = line.split(":")
+                rCT.Regex = x[1].lstrip().rstrip()
+                        
+            if line.find("expect") != -1:
+                x = line.split(":")
+                rCT.Expect = x[1].lstrip().rstrip()
+                
+            if line.find("not_expect") != -1:
+                x = line.split(":")
+                rCT.Not_expect = x[1].lstrip().rstrip()
+                        
+    
+
+rCT.displayItems()
+routerFile.close()
