@@ -1,0 +1,62 @@
+#A store provides the facility for customer and sales person/manager
+#to view all the products in the alphabetical order of the Products.
+#Which makes tracking easy. Develop a Python program to automate the above task
+
+products = {}
+
+while True:
+    print("0. Exit")
+    print("1. Add Product")
+    print("2. Update Product")
+    print("3. Display Products")
+    print("Enter Your Choice : ", end="")
+    ch = int(input())
+
+    if ch==0:
+        break
+    if ch==1:
+        print("Enter Product Name : ", end="")
+        name = input()
+
+        found=0
+        for p in products.keys():
+            if p==name:
+               print("Product ",p," is Already Present")
+               found=1
+               break
+
+        if found==0:
+            print("Enter Product Price : ", end="")
+            try:
+                price = int(input())
+            except:
+                print("Invalid Input")
+                continue
+                
+        products[name] = price
+
+    if ch==2:
+        print("Enter Product Name to Update : ", end="")
+        name = input()
+
+        found=0
+        for p in products.keys():
+            if p==name:
+                print("Enter Product Price : ", end="")
+                try:
+                    price = int(input())
+                except:
+                    print("Invalid Input")
+                    break
+                
+                products[name] = price
+                found=1
+                break
+
+            if found==0:
+                print("Product ",p," is Not Present")
+
+
+    if ch==3:
+        for p in products.keys():
+            print(p, " - ", products[p])
