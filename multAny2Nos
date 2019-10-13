@@ -1,6 +1,13 @@
 #multiplication of any 2 numbers
 #without converting to int
 
+#number_one = "193283492420348904832902348908239048823480823"
+#number_two = "3248234890238902348823940990234"
+
+#condition:
+#DO NOT CONVERT TO INT AND DO THE MULTIPLICATION
+
+
 print("Enter Number 1 : ", end="")
 n1 = input()
 
