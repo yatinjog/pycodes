@@ -1,0 +1,35 @@
+#The first line of input contains an integer n.
+#Here n is the number of elements in the array.
+#The next line contains n space separated distinct integers which are the elements of the array.
+#sort the test cases based on number of 1's in their binary form
+
+import yfun
+
+print("Enter Number of Elements for this test case : ", end="")
+n = int(input())
+
+print("Enter ", n, " Space Separated Values")
+v = input()
+
+vlist = v.split(" ")
+
+bins = []
+for k in vlist:
+    a = int(k)
+    #following functions are from user defined package
+    #please refer pyc file with name myfun
+    bins.append(yfun.countInBinary((yfun.getBinary(a)),1))
+
+sbin=bins[:]
+
+for p in range(len(sbin)):
+    for q in range(p+1,len(sbin)):
+        if sbin[p]>sbin[q]:
+            sbin[p], sbin[q] = sbin[q], sbin[p]
+            vlist[p], vlist[q] = vlist[q], vlist[p]
+
+print("\nSorted Lists Based on Number of 1's in The Binary")
+print("Number\t\tBinary\t\tCount Of 1's in The Binary")
+for p in range(len(sbin)):
+    b = yfun.getBinary(int(vlist[p]))
+    print(vlist[p], "\t\t",b, "\t"*(3-len(b)//5), sbin[p])
