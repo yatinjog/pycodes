@@ -1,0 +1,68 @@
+#multiplication of any 2 numbers
+#without converting to int
+
+print("Enter Number 1 : ", end="")
+n1 = input()
+
+print("Enter Number 2 : ", end="")
+n2 = input()
+
+ans=""
+
+n2 = n2[::-1]
+n1 = n1[::-1]
+
+rounds=1
+
+for i in n2:
+    u=c=0
+    t=""
+    for j in n1:
+        temp = (ord(i)-48) * (ord(j)-48) + c
+        u = temp%10
+        c = temp//10
+        t += str(u)
+
+    if c>0:
+        t += str(c)
+    
+    t = t[::-1]
+    if ans=="":
+        ans=t
+        continue
+
+    t += ("0"*rounds)
+
+    t = t[::-1]
+    ans = ans[::-1]
+
+    a=""
+    u=c=j=0
+    for j in range(len(ans)):
+        temp = (ord(t[j])-48) + (ord(ans[j])-48) + c
+        if temp>9:
+            u = temp%10
+            c = temp//10
+            a += str(u)
+        else:
+            a += str(temp)
+
+ 
+    for k in range(j+1,len(t)):
+        temp = (ord(t[k])-48) + c
+        if temp>9:
+            u = temp%10
+            c = temp//10
+            a += str(u)
+        else:
+            a += str(temp)
+            u=c=0
+
+    if c>0:
+        a += str(c)
+
+        
+    ans = a[::-1]
+    rounds += 1
+
+print(ans)
