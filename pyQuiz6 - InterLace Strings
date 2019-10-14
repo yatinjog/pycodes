@@ -1,0 +1,43 @@
+
+s1 = "abc"
+s2 = "pqrstuv"
+
+
+#-----Using recursive function-----
+
+s=""
+def interLace(s1, s2):
+    def recLace(s1, s2, out):
+        if s1=="":
+            print(out+s2)
+            return out+s2
+        if s2=="":
+            print(out+s1)
+            return out+s1
+        else:
+            return recLace(s1[1:], s2[1:], out + s1[0] + s2[0])
+    recLace(s1, s2,"")
+
+interLace(s1, s2)
+
+mins = len(s1) if len(s1)<=len(s2) else len(s2)
+
+
+#-----using loops-----
+
+s3=""
+i=0
+for i in range(mins):
+    s3 += (s1[i]+s2[i])
+
+i += 1
+if len(s1)>mins:
+    while i<len(s1):
+        s3 += s1[i]
+        i += 1
+else:
+    while i<len(s2):
+        s3 += s2[i]
+        i += 1
+        
+print(s3)
