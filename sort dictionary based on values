@@ -1,0 +1,22 @@
+#sort dictionary based on values
+
+a = {}
+
+for i in range(4):
+    print("Enter Key : ", end="")
+    k = input()
+    print("Enter Value : ", end="")
+    v = int(input())
+    
+    a[k] = v
+
+print(a)
+
+z=sorted(zip(a.values(), a.keys()))
+z = list(z)
+
+print(z)
+
+print("Sorted Dictionary Based On Values")
+for i in z:
+    print(i)
