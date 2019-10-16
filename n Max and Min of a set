@@ -1,22 +1,5 @@
 
 #-------------------------------------------------
-#max of 3 nos
-
-a = int(input("Enter Number 1 : "))
-b = int(input("Enter Number 2 : "))
-c = int(input("Enter Number 3 : "))
-
-max=a
-
-if b>max:
-    max=b
-
-if c>max:
-    max=c
-
-print("Maximum is : ", max)
-
-#-------------------------------------------------
 #first n max and n min numbers
 
 nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
@@ -30,3 +13,21 @@ print(nmax)
 
 nmin = sorted(nums)[:n]
 print(nmin)
+
+
+#-------------------------------------------------
+#first n max and n min numbers using heapq
+
+import heapq
+
+nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
+print(heapq.nlargest(n, nums))
+print(heapq.nsmallest(n, nums))
+
+
+#-------------------------------------------------
+#first n max and n min numbers using heapq.heapify
+
+h = list(nums)
+heapq.heapify(h)
+print(h)
