@@ -1,0 +1,99 @@
+#queue using list and exception handling
+
+class Queue:
+    __qOpr = []
+
+    def __init__(self):
+        self.__q=[]
+
+    def isEmpty(self):
+        if len(self.__q)==0:
+            return 1
+        return 0
+
+    def addQ(self, v):
+        self.__q.insert(0,v)
+
+    def delQ(self, opt):
+        if self.isEmpty():
+            print("Queue is Empty...")
+            return None
+
+        if opt == "F":
+            v = self.__q[-1]
+            self.__q.pop(-1)
+        elif opt == "L":
+            v=self.__q[0]
+            self.__q.pop(0)
+
+        return v
+
+    def display(self):
+        if self.isEmpty():
+            print("Queue is Empty...")
+            return
+        print("Queue Elements Are : ", self.__q)
+        
+    def reverse(self):
+        if self.isEmpty():
+            print("Queue is Empty...")
+            return 
+
+        self.__q=self.__q[::-1]
+        print("Queue Reversed Successfully...")
+        self.display()
+    
+
+Q = Queue()
+
+while True:
+    print("0. Exit")
+    print("1. Add Element")
+    print("2. Delete First")
+    print("3. Delete Last")
+    print("4. Display Queue")
+    print("5. Reverse Queue")
+    print("Enter Your Choice : ", end="")
+
+    try:
+        ch = int(input())
+    except:
+        print("Invalid Input...")
+        continue    
+
+    if ch==0:
+        break
+    if ch==1:
+
+        while True:
+            print("Enter Value : ", end="")
+            try:
+                v = int(input())
+                break
+            except:
+                print("Invalid Input...")
+                continue
+            
+        Q.addQ(v)
+        print(v, " Added to The Queue...")
+        continue
+    if ch==2:
+        v = Q.delQ("F")
+
+        if v is not None:
+            print(v, " Deleted from Queue...")
+        continue
+    if ch==3:
+        v = Q.delQ("L")
+
+        if v is not None:
+            print(v, " Deleted from Queue...")
+        continue
+    if ch==4:
+        Q.display()
+        continue
+    if ch==5:
+        Q.reverse()
+        continue
+
+    print("Invalid Choice... Enter Valid Choice (0-1-2-3)")
