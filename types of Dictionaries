@@ -1,0 +1,44 @@
+#types of dictionaries
+
+#------------------------------------------------
+#normal dictionary creation
+
+from yfun import yprint
+
+d1 = {}
+
+yprint("How Many Elements : ")
+n = int(input())
+
+for i in range(n):
+    yprint("Enter Key : ")
+    k = input()
+
+    if k not in d1.keys():
+        d1[k]=[]
+    
+    yprint("Enter Value : ")
+    v = int(input())
+    d1[k].append(v)
+
+print(d1)
+
+
+#------------------------------------------------
+#dictionary creation using defaultdict
+
+from collections import defaultdict
+
+yprint("How Many Elements : ")
+n = int(input())
+
+d2 = defaultdict(list)
+
+for i in range(n):
+    yprint("Enter Key : ")
+    k = input()
+    yprint("Enter Value : ")
+    v = int(input())
+    d2[k].append(v)
+
+print(d2)
